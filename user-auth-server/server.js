@@ -3,15 +3,24 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
-
+const passport = require('passport');
+require('./passport');
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const cookieSession = require('cookie-session');
+
+
 
 const Pig = require('pigcolor');
 
 const app = express();
 
-
+app.use(cookieSession({
+    name: 'google-auth-session',
+    keys: ['key1', 'key2']
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 // ?? Storage Module -----------------------------------------------
 
 
@@ -65,6 +74,27 @@ app.get("/", (req, res) => {
 
 // ?? ---------------------------------------------
 
+app.get("/failed", (req, res) => {
+    res.send("Failed")
+})
+app.get("/success", (req, res) => {
+    res.send(`Welcome ${req.user.email}`)
+})
+
+app.get('/google',
+    passport.authenticate('google', {
+        scope: ['email', 'profile']
+    }));
+
+app.get('/google/callback',
+    passport.authenticate('google', {
+        failureRedirect: '/failed',
+    }),
+    function(req, res) {
+        res.redirect('/success')
+
+    }
+);
 
 
 
