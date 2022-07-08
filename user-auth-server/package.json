@@ -1,0 +1,32 @@
+{
+  "name": "user-auth-server",
+  "version": "1.0.0",
+  "description": "User Auth Server - All Authentication Module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwath007/user-authentication.git"
+  },
+  "keywords": [
+    "Authentication"
+  ],
+  "author": "Sri Vigneshwar DJ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashwath007/user-authentication/issues"
+  },
+  "homepage": "https://github.com/ashwath007/user-authentication#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.3",
+    "multer": "^1.4.5-lts.1",
+    "passport-google-oauth": "^2.0.0",
+    "pigcolor": "^1.0.4"
+  }
+}
